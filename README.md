@@ -29,10 +29,10 @@ A single dataset of more than 34,000 organizations that have received funding fr
 **Original Model - nn**  
 The first model used 2 hidden layers, and used the mean of the number of inputs and number of outputs for the hidden node unit calculations. The hidden nodes used `relu` and the output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
 
-**Optimization Model - nn_A1**  
+**Optimization Model - nn_A1 (extra hidden layer)**  
 The first optimized model simply added a third hidden layer. As with the first, the hidden nodes each used the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu` The output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
 
-**Optimization Model - nn_A2**  
+**Optimization Model - nn_A2 (reduced feature set)**  
 The second optimized model tried a different approach, namely trying to reduce some noise from the feature set. The original feature set data was re-visited, and two feature columns, `STATUS` and `SPECIAL_CONSIDERATIONS`,looked to be entirely of the same values in each of their columns, and were therefore removed/dropped to simplify the features set somewhat. This reduced feature set was then encoded, scaled and split into train/test data, similar to the approach for the original data set. This reduced feature data was then used in the `nn_A2` model.  
 The `nn_A2` model was created with two hidden nodes each the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu`. The output node used `sigmoid`. This model was trained for 50 epochs on this reduced feature set, and then evaluated on the reduced test data set.  
 
