@@ -38,13 +38,14 @@ The `nn_A2` model was created with two hidden nodes each the mean of the inputs 
 
 ## Summary Results
 
-The comparison of each model's setup and results for loss and accuracy are captured in the table below. Neither of the optimization attempts dramatically improved the model. The `nn_A1` attempt had a nearly identical loss, and a barely higher accuracy. The `nn_A2` attempt seems to have made things worth, with both a higher loss and a lower accuracy.
+The comparison of each model's setup and results for loss and accuracy are captured in the table below. Neither of the optimization attempts dramatically improved the model. The `nn_A1` attempt, using a third hidden layer, had a nearly identical loss, and accuracy. The `nn_A2` attempt, with the reduced-feature set, seems to have made things worse, with both a higher loss and a lower accuracy.
 
 | model | inputs | hidden | h1(units,act) | h2 | h3 | out | Epoch | Loss | Acc |
 | :--- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nn | 116 | 2 | 58, relu | 29, relu | n/a | 1, sigmoid | `50` | `0.555` | `0.727` |
-| nn_A1 | 116 | 3 | 58, relu | 29, relu | 15, relu | 1, sigmoid | `50` | `0.554` | `0.731` |
-| nn_A2 | 113 | 2 | 57, relu | 29, relu | n/a | 1, sigmoid | `50` | `0.618` | `0.6858` |
+| nn | 116 | 2 | 58, relu | 29, relu | n/a | 1, sigmoid | `50` | `0.5532` | `0.7311` |
+| nn_A1 | 116 | 3 | 58, relu | 29, relu | 15, relu | 1, sigmoid | `50` | `0.5551` | `0.7299` |
+| nn_A2 | 113 | 2 | 57, relu | 29, relu | n/a | 1, sigmoid | `50` | `0.9219` | `0.3633` |
+
 
 
 See full analysis details in the notebook [GC_venture_funding_with_deep_learning.ipynb](app/GC_venture_funding_with_deep_learning.ipynb) 
