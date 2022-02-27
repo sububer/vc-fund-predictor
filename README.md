@@ -1,10 +1,10 @@
-# VC Fund Predictor
+# VC Fund Success Predictor
 Venture Fund Success Modeling With Deep Learning
 
 ---
 
 ## Overview
-A venture capital firm, Alphabet Soup, recieves many funding applications from startups every day. This is an analyis using deep learning techniques, to create a model which predicts whether applicants will be successful if funded by Alphabet Soup.  
+A venture capital firm, Alphabet Soup, recieves many funding applications from startups every day. This is an analyis using deep learning techniques, to create models which predict whether applicants will be successful if funded by Alphabet Soup.  
 
 See full analysis details in the notebook [GC_venture_funding_with_deep_learning.ipynb](app/GC_venture_funding_with_deep_learning.ipynb)  
 
@@ -19,21 +19,21 @@ A single dataset of more than 34,000 organizations that have received funding fr
 1) `EIN` and `NAME` data is not essential and will be dropped
 2) The first neural network model will use 2 hidden layers, with `relu` activation function
 2) Technical deliverables:
-    - prepare data for use with neural network model
+    - prepare data (encode, scale, train/test sets) for use with neural network model
     - create compile and evaluate a binary classification model using a neural network
-    - optimize the neural network model at least two more times looking for performance improvements
+    - optimize the neural network model two more times looking for performance improvements
 
 
 ## Model Design And Optimizations
 
-**Original Model - nn**
+**Original Model - nn**  
 The first model used 2 hidden layers, and used the mean of the number of inputs and number of outputs for the hidden node unit calculations. The hidden nodes used `relu` and the output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
 
-**Optimization Model - nn_A1**
-The first optimized model simply added a third hidden layer. As with the first, the hidden nodes each the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu` The output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
+**Optimization Model - nn_A1**  
+The first optimized model simply added a third hidden layer. As with the first, the hidden nodes each used the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu` The output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
 
-**Optimization Model - nn_A2**
-The second optimized model tried a different approach, namely trying to reduce some noise from the feature set. The original feature set data was re-visited, and two feature columns looked to be entirely of the same value in the column. So, the following two column values were removed from analysis, namely `STATUS` and `SPECIAL_CONSIDERATIONS`. This reduced feature set was then encoded, and scaled similarly to the original data set, then used in the `nn_A2` model.  
+**Optimization Model - nn_A2**  
+The second optimized model tried a different approach, namely trying to reduce some noise from the feature set. The original feature set data was re-visited, and two feature columns looked to be entirely of the same value in the column, and were identified as candidates for removal to simplify the features set. So, the following two column values were removed from analysis: `STATUS` and `SPECIAL_CONSIDERATIONS`. This reduced feature set was then encoded, scaled and split into train/test data, similar to the approach for the original data set. This reduced feature data was then used in the `nn_A2` model.  
 The `nn_A2` model was created with two hidden nodes each the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu`. The output node used `sigmoid`. This model was trained for 50 epochs on this reduced feature set, and then evaluated on the reduced test data set.  
 
 ## Summary Results
@@ -60,7 +60,7 @@ See full analysis details in the notebook [GC_venture_funding_with_deep_learning
 ## Technologies
 
 This challenge uses [python](https://www.python.org/) 3.7 and the following [built-in](https://docs.python.org/3/py-modindex.html) modules:
-- [os](https://docs.python.org/3/library/os.html#module-os)
+- [pathlib](https://docs.python.org/3/library/pathlib.html)
 
 Additionally, it requires:
 - [matplotlib](https://matplotlib.org/)
