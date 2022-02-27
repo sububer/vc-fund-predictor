@@ -33,14 +33,14 @@ The first model used 2 hidden layers, and used the mean of the number of inputs 
 The first optimized model simply added a third hidden layer. As with the first, the hidden nodes each used the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu` The output node used `sigmoid`. The model was trained for 50 epochs and then evaluated on the test data set.
 
 **Optimization Model - nn_A2**  
-The second optimized model tried a different approach, namely trying to reduce some noise from the feature set. The original feature set data was re-visited, and two feature columns looked to be entirely of the same value in the column, and were identified as candidates for removal to simplify the features set. So, the following two column values were removed from analysis: `STATUS` and `SPECIAL_CONSIDERATIONS`. This reduced feature set was then encoded, scaled and split into train/test data, similar to the approach for the original data set. This reduced feature data was then used in the `nn_A2` model.  
+The second optimized model tried a different approach, namely trying to reduce some noise from the feature set. The original feature set data was re-visited, and two feature columns, `STATUS` and `SPECIAL_CONSIDERATIONS`,looked to be entirely of the same values in each of their columns, and were therefore removed/dropped to simplify the features set somewhat. This reduced feature set was then encoded, scaled and split into train/test data, similar to the approach for the original data set. This reduced feature data was then used in the `nn_A2` model.  
 The `nn_A2` model was created with two hidden nodes each the mean of the inputs and output count to determine the number of units per hidden layer, and each hidden layer used `relu`. The output node used `sigmoid`. This model was trained for 50 epochs on this reduced feature set, and then evaluated on the reduced test data set.  
 
 ## Summary Results
 
 The comparison of each model's setup and results for loss and accuracy are captured in the table below. Neither of the optimization attempts dramatically improved the model. The `nn_A1` attempt had a nearly identical loss, and a barely higher accuracy. The `nn_A2` attempt seems to have made things worth, with both a higher loss and a lower accuracy.
 
-| model | input_dim | num_hidden_layers | h1 (units, act) | h2 (units, act) | h3 (units, act) | output (units, act) | Epochs | Loss | Accuracy |
+| model | inputs | hidden | h1(units,act) | h2 | h3 | out(units,act) | Epoch | Loss | Acc |
 | :--- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | nn | 116 | 2 | 58, relu | 29, relu | n/a | 1, sigmoid | `50` | `0.555` | `0.727` |
 | nn_A1 | 116 | 3 | 58, relu | 29, relu | 15, relu | 1, sigmoid | `50` | `0.554` | `0.731` |
